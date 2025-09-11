@@ -3,5 +3,5 @@ using UnityEngine;
 public interface IInteract
 {
 
-    public bool DoInteraction(out IInteractable interactable);
+    public IInteractable DoInteraction();
 }

@@ -1,49 +1,78 @@
 using UnityEngine;
+using UnityEngine.Splines.ExtrusionShapes;
 
 public class Character : MonoBehaviour, IInteract
 {
-    private CharacterController _char_controles;
+    /// <summary>
+    /// Variable for CharacterController component
+    /// </summary>
+    private CharacterController _char_control;
+
+    /// <summary>
+    /// Vector for character movement 
+    /// </summary>
     private Vector3 _movement;
+
+    /// <summary>
+    /// Variable  for movement speed
+    /// </summary>
     [SerializeField] private float _move_speed = 5.0f;
+    [SerializeField] private float _angle_correction = 45f;
 
 
-    [SerializeField] private float _castDistance = 5f;
-    [SerializeField] private Vector3 _raycastOffset = Vector3.up;
-
-
+    /// <summary>
+    /// Distance for checking distance for IInteractables <seealso cref="IInteractables"/>
+    /// </summary>
+    [SerializeField] private float _castDistance = 1.5f;
+    
+    /// <summary>
+    /// Layer for interactable objects
+    /// </summary>
+    [SerializeField] private LayerMask interactableLayerMask;
     void Start()
     {
-        _char_controles = GetComponent<CharacterController>();
+        _char_control = GetComponent<CharacterController>();
     }
 
     void Update()
     {
-        _movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized * _move_speed;
-        _char_controles.SimpleMove(_movement);
+
+        // 
+        _movement = Quaternion.AngleAxis(_angle_correction, Vector3.up) * new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+        _movement *= _move_speed;
+        _char_control.SimpleMove(_movement);
 
         if (Input.GetButtonDown("Interact"))
         {
-            if (DoInteraction(out IInteractable interactable))
-            {
+            var interactable = DoInteraction();
+            if (interactable != null)
                 interactable.Interact(this);
-            }
+            else
+                Debug.Log("NULL IINTERACTABLE");
         }
 
     }
 
 
 
-    public bool DoInteraction(out IInteractable interactable)
+    public IInteractable DoInteraction()
     {
-        interactable = null;
+        IInteractable interactable = null;
+        int maxColliders = 5;
+        Collider[] hitColliders = new Collider[maxColliders];
+        int quantity = Physics.OverlapSphereNonAlloc(transform.position, _castDistance, hitColliders, interactableLayerMask);
 
-        Ray ray = new(transform.position + _raycastOffset, transform.forward);
-
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, _castDistance))
+        if (quantity > 0)
         {
-            interactable = hitInfo.collider.GetComponent<IInteractable>();
+            foreach (var collider in hitColliders)
+            {
+                Debug.Log(collider);
+                interactable = collider.gameObject.GetComponent<IInteractable>();
+                if (interactable != null)
+                    return interactable;
+            }
         }
 
-        return interactable != null;
+        return null;
     }
 }

@@ -1,11 +1,10 @@
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class DoorInteraction : MonoBehaviour, IInteractable
 {
-    //[SerializeField] private Vector3 _targetRotation = new Vector3(0f, -100f, 0f);
-    [SerializeField] private float _rotationSpeed = 3f;
-
     private bool _isOpen = false;
+
 
     public bool CanInteract()
     {
@@ -14,9 +13,28 @@ public class DoorInteraction : MonoBehaviour, IInteractable
 
     public bool Interact(IInteract interactor)
     {
+        if (_isOpen)
+        {
+            CloseDoor();
+        }
+        else
+        {
+            OpenDoor();
+        }
+
         _isOpen = !_isOpen;
         // Implementar animaciones o fisicas propias
         Debug.Log("THIS DOOR IS OPEN: " + _isOpen.ToString());
         return true;
+    }
+
+    private void OpenDoor()
+    {
+        gameObject.transform.parent.Rotate(0, 90, 0);
+    }
+
+    private void CloseDoor()
+    {
+        gameObject.transform.parent.Rotate(0, -90, 0);
     }
 }
