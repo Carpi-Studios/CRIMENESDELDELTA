@@ -4,26 +4,31 @@ using UnityEngine;
 public class contenedorSombreroUI : MonoBehaviour
 {
     [SerializeField] private VidaUI[] hats;
-    [SerializeField] private int vidaActual;
-
-    private void Update()
+    private PlayerHealth playerHealth;
+    private void Start()
     {
-       if(Input.GetKeyDown(KeyCode.A))
-        {
-            ActivaSombrero(vidaActual);
-        }
-
+        playerHealth = FindFirstObjectByType<PlayerHealth>();
+        playerHealth.playerTakesDamage += ActivaSombrero;
+        ActivaSombrero(playerHealth.GetCurrentHealth());
     }
-    private void ActivaSombrero(int vidaActual)
+    private void OnDisable()
+    {
+        playerHealth.playerTakesDamage -= ActivaSombrero;
+    }
+
+    
+    private void ActivaSombrero(int currentHealth)
     {
         for (int i = 0; i < hats.Length; i++)
         {
-            if (i < vidaActual)
+            if (i < currentHealth)
             {
+                if (hats[i].IsActive()) { continue; }
                 hats[i].ActiveHat();
             }
             else
             {
+                if (!hats[i].IsActive()) { continue; }
                 hats[i].DeactiveHat();
             }
         }

@@ -14,6 +14,7 @@ public class Item : MonoBehaviour
     [HideInInspector] public bool equiped;
     [HideInInspector] public GameObject weaponManager;
     [HideInInspector] public GameObject weapon;
+    [HideInInspector] public GameObject sotano;
     public bool playersWeapon;
 
     private void Start()
@@ -84,6 +85,12 @@ public class Item : MonoBehaviour
                 
 
                     break;
+            case "llave":
+                              
+                    ActiveDoor();
+                
+
+                break;
 
             default:
                 
@@ -91,7 +98,22 @@ public class Item : MonoBehaviour
         }
         Debug.Log("Tipo de ítem no reconocido: " + type);
     }
-
+    private void ActiveDoor()
+    {
+      if (type=="llave")
+        {
+            basementDoor basementDoor = GameObject.FindWithTag("Basementdoor").GetComponent< basementDoor>();
+            if(basementDoor != null)
+            {
+                basementDoor.DoorActive();
+            }
+            else
+            {
+                basementDoor.DoorInactive();
+            }
+          
+        }
+    }
 
 
 }
