@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Levels/UI/testUI.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Levels/mainMenu.unity
+    guid: 7f57cef17c35e7444b624606fad76abb
+  - enabled: 1
+    path: Assets/Levels/UI/victoryScene.unity
+    guid: de8cd1e611b4f1e48a959118e5af731a
+  - enabled: 1
+    path: Assets/Levels/UI/defeatedLevel1.unity
+    guid: 71238c5c913daf34ab442a07657facec
+  - enabled: 1
+    path: Assets/Levels/level1_PB/level1_PB.unity
+    guid: 1a1b5f531cf7b2549b7014f077e12a77
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 1bfc8ffa2f972b14782bf543cb3a960c, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

@@ -7,23 +7,29 @@ public class MenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("Nivel 1");
+        SceneManager.LoadScene(3);
     }
     public void SecondLevel()
     {
-        SceneManager.LoadScene("Nivel 2");
+        SceneManager.LoadScene(4);
     }
+    
     public void ThirdLevel()
     {
-        SceneManager.LoadScene("Nivel 3");
+        SceneManager.LoadScene(5);
     }
+
     public void ExitGame()
     {
         Application.Quit();
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene("mainMenu");
+        SceneManager.LoadScene(0);
     }
-        
+    public void victory()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 }
