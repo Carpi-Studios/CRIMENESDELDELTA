@@ -4,6 +4,8 @@ using UnityEngine;
 public class DoorInteraction : MonoBehaviour, IInteractable
 {
     private bool _isOpen = false;
+    [SerializeField] private int[] _needItemID;
+    [SerializeField] GameObject _body;
 
 
     public bool CanInteract()
@@ -30,11 +32,11 @@ public class DoorInteraction : MonoBehaviour, IInteractable
 
     private void OpenDoor()
     {
-        gameObject.transform.parent.Rotate(0, 90, 0);
+        _body.transform.Rotate(0, 90, 0);
     }
 
     private void CloseDoor()
     {
-        gameObject.transform.parent.Rotate(0, -90, 0);
+        _body.transform.Rotate(0, -90, 0);
     }
 }
