@@ -7,7 +7,7 @@ public class MenuManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("level1_PB");
     }
     public void SecondLevel()
     {
@@ -25,11 +25,11 @@ public class MenuManager : MonoBehaviour
     }
     public void mainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("mainMenu");
     }
     public void victory()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("victoryScene");
     }
 
 }

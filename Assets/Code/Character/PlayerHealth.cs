@@ -43,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
     {
         string currentScene = SceneManager.GetActiveScene().name;
 
-        if (currentScene == "Nivel 1") 
+        if (currentScene == "level1_PB") 
         {
             SceneManager.LoadScene("defeatedLevel1");
         }

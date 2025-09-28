@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Interactable
+  - ClueDisplay
+  - weapon
+  - weaponManager
+  - Item
   layers:
   - Default
   - TransparentFX

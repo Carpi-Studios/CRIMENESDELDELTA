@@ -6,11 +6,13 @@ public class enemydamage : MonoBehaviour
     [SerializeField] private int damage;
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent(out PlayerHealth playerHealth))
+        PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
         {
-            playerHealth.takeDamage(damage);
+            playerHealth.takeDamage(damage); 
         }
+
     }
 }
