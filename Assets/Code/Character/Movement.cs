@@ -1,6 +1,7 @@
 using UnityEngine;
 public class Movement : MonoBehaviour
 {
+    private Animator anim;
     /// <summary>
     /// Variable for CharacterController component
     /// </summary>
@@ -49,6 +50,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         _char_control = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -68,6 +70,18 @@ public class Movement : MonoBehaviour
         _movement *= (isCrouching ? crouchSpeed : move_speed) * Time.deltaTime;
         //Execute the movement
         _char_control.SimpleMove(_movement);
+
+        //Animación basada en movimiento
+        if (_movement.magnitude > 0.01f)
+        {
+            anim.SetTrigger("Walk");
+        }
+        else
+        {
+            anim.SetTrigger("Idle");
+        }
+
+
 
     }
 

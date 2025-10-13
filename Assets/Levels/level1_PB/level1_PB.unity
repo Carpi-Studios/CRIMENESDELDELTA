@@ -4270,6 +4270,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6305924462904155128, guid: a2a403001289a0b49a48b662e610ae6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8545836518194954709, guid: a2a403001289a0b49a48b662e610ae6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4502,6 +4506,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fea4f286e7a51e9498462a99c962559c, type: 3}
+--- !u!1 &398157642 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6305924462904155128, guid: a2a403001289a0b49a48b662e610ae6d, type: 3}
+  m_PrefabInstance: {fileID: 357482324}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -17399,6 +17408,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8474389777785976218, guid: b91abc9817bf17541b75210d844484ed, type: 3}
+      propertyPath: interactionCanvas
+      value: 
+      objectReference: {fileID: 398157642}
     - target: {fileID: 2649987887949949207, guid: b91abc9817bf17541b75210d844484ed, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.8

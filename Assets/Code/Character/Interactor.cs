@@ -1,7 +1,7 @@
 using UnityEngine;
 public class Interactor : MonoBehaviour, IInteract
 {
-
+    [SerializeField] GameObject interactionCanvas;
     /// <summary>
     /// Distance for checking distance for IInteractables <seealso cref="IInteractables"/>
     /// </summary>
